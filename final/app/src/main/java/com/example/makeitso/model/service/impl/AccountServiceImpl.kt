@@ -21,6 +21,7 @@ import com.example.makeitso.model.service.AccountService
 import com.example.makeitso.model.service.trace
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import javax.inject.Inject
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -62,6 +63,16 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
       val credential = EmailAuthProvider.getCredential(email, password)
       auth.currentUser!!.linkWithCredential(credential).await()
     }
+
+  override suspend fun createAccountWithEmailAndPassword(email: String, password: String) {
+    auth.createUserWithEmailAndPassword(email, password).await()
+  }
+
+  override suspend fun createAccountWithGoogle(tokenId: String) {
+    val firebaseCredential = GoogleAuthProvider.getCredential(tokenId, null)
+    auth.signInWithCredential(firebaseCredential).await()
+
+  }
 
   override suspend fun deleteAccount() {
     auth.currentUser!!.delete().await()

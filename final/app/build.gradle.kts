@@ -78,6 +78,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-permissions:0.30.1")
     implementation("com.google.dagger:hilt-android:2.47")
     ksp("com.google.dagger:hilt-compiler:2.47")
+    implementation ("com.github.stevdza-san:OneTapCompose:1.0.7")
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))

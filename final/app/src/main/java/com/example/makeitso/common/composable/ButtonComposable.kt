@@ -17,11 +17,23 @@ limitations under the License.
 package com.example.makeitso.common.composable
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.stevdzasan.onetap.OneTapSignInWithGoogle
+import com.stevdzasan.onetap.rememberOneTapSignInState
 
 @Composable
 fun BasicTextButton(@StringRes text: Int, modifier: Modifier, action: () -> Unit) {
@@ -40,6 +52,49 @@ fun BasicButton(@StringRes text: Int, modifier: Modifier, action: () -> Unit) {
       )
   ) {
     Text(text = stringResource(text), fontSize = 16.sp)
+  }
+}
+
+@Composable
+fun GoogleSignInButton(action: (s: String) -> Unit, modifier: Modifier = Modifier) {
+  val state = rememberOneTapSignInState()
+  OneTapSignInWithGoogle(
+    state = state,
+    clientId = "641739989722-ckk64346jd3duicarbth4jetjlrc8hsh.apps.googleusercontent.com",
+    onTokenIdReceived = { tokenId ->
+      action(tokenId)
+    },
+    onDialogDismissed = { message ->
+
+    }
+  )
+
+  Button(
+    onClick = { state.open() },
+    modifier = Modifier
+      .wrapContentSize()
+      .then(modifier),
+    shape = RoundedCornerShape(24.dp),
+    border = BorderStroke(width = 1.dp, color = Color.White),
+    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+  ) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+//      Icon(
+//        painter = painterResource(R.drawable.ic_google),
+//        contentDescription = null,
+//        tint = Color.Unspecified,
+//        modifier = Modifier
+//          .size(24.dp)
+//
+//      )
+      Text(
+        text = "sign_in_google_account",
+        color = Color.Black
+      )
+    }
   }
 }
 

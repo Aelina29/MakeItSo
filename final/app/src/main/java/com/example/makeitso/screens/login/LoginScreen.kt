@@ -53,5 +53,10 @@ fun LoginScreen(
     BasicTextButton(AppText.forgot_password, Modifier.textButton()) {
       viewModel.onForgotPasswordClick()
     }
+
+    GoogleSignInButton({
+      viewModel.onGoogleSignInCLick(it, openAndPopUp)
+    })
+
   }
 }

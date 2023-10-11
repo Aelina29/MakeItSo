@@ -77,4 +77,11 @@ class LoginViewModel @Inject constructor(
       SnackbarManager.showMessage(AppText.recovery_email_sent)
     }
   }
+
+  fun onGoogleSignInCLick(it: String, openAndPopUp: (String, String) -> Unit) {
+    launchCatching {
+      accountService.createAccountWithGoogle(it)
+      openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
+    }
+  }
 }
