@@ -61,6 +61,18 @@ fun EmailField(value: String, onNewValue: (String) -> Unit, modifier: Modifier =
 }
 
 @Composable
+fun GmailField(value: String, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
+  OutlinedTextField(
+    singleLine = true,
+    modifier = modifier,
+    value = value,
+    onValueChange = { onNewValue(it) },
+    placeholder = { Text(stringResource(AppText.email)) },
+    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Gmail") }
+  )
+}
+
+@Composable
 fun PasswordField(value: String, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
   PasswordField(value, AppText.password, onNewValue, modifier)
 }

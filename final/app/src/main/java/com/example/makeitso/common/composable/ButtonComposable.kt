@@ -24,6 +24,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -76,7 +78,11 @@ fun GoogleSignInButton(action: (s: String) -> Unit, modifier: Modifier = Modifie
       .then(modifier),
     shape = RoundedCornerShape(24.dp),
     border = BorderStroke(width = 1.dp, color = Color.White),
-    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+    colors =
+    ButtonDefaults.buttonColors(
+      backgroundColor = MaterialTheme.colors.primary,
+      contentColor = MaterialTheme.colors.onPrimary
+    )
   ) {
     Row(
       verticalAlignment = Alignment.CenterVertically,
@@ -90,9 +96,14 @@ fun GoogleSignInButton(action: (s: String) -> Unit, modifier: Modifier = Modifie
 //          .size(24.dp)
 //
 //      )
+      //leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Email") }
+//      Icon(
+//        imageVector = Icons.Default.Email
+//      )
+     // Icons.Default.Email
       Text(
-        text = "sign_in_google_account",
-        color = Color.Black
+        text = "Sign in by Google",
+        //color = Color.Black
       )
     }
   }

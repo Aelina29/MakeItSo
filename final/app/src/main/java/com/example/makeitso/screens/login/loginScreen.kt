@@ -45,6 +45,9 @@ fun LoginScreen(
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
+    GoogleSignInButton({
+      viewModel.onGoogleSignInCLick(it, openAndPopUp)
+    })
     EmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())
     PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
 
@@ -53,10 +56,5 @@ fun LoginScreen(
     BasicTextButton(AppText.forgot_password, Modifier.textButton()) {
       viewModel.onForgotPasswordClick()
     }
-
-    GoogleSignInButton({
-      viewModel.onGoogleSignInCLick(it, openAndPopUp)
-    })
-
   }
 }

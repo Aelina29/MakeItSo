@@ -79,6 +79,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.47")
     ksp("com.google.dagger:hilt-compiler:2.47")
     implementation ("com.github.stevdza-san:OneTapCompose:1.0.7")
+    // Also add the dependency for the Google Play services library and specify its version
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
