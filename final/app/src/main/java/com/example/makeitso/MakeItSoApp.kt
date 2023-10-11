@@ -41,6 +41,7 @@ import com.example.makeitso.common.composable.RationaleDialog
 import com.example.makeitso.common.snackbar.SnackbarManager
 import com.example.makeitso.screens.edit_task.EditTaskScreen
 import com.example.makeitso.screens.login.LoginScreen
+import com.example.makeitso.screens.login.LoginScreenG
 import com.example.makeitso.screens.settings.SettingsScreen
 import com.example.makeitso.screens.sign_up.SignUpScreen
 import com.example.makeitso.screens.splash.SplashScreen
@@ -133,6 +134,10 @@ fun NavGraphBuilder.makeItSoGraph(appState: MakeItSoAppState) {
 
   composable(LOGIN_SCREEN) {
     LoginScreen(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
+  }
+
+  composable(LOGIN_SCREEN_G) {
+    LoginScreenG(openAndPopUp = { route, popUp -> appState.navigateAndPopUp(route, popUp) })
   }
 
   composable(SIGN_UP_SCREEN) {

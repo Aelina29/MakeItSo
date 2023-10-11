@@ -17,6 +17,7 @@ limitations under the License.
 package com.example.makeitso.screens.settings
 
 import com.example.makeitso.LOGIN_SCREEN
+import com.example.makeitso.LOGIN_SCREEN_G
 import com.example.makeitso.SIGN_UP_SCREEN
 import com.example.makeitso.SPLASH_SCREEN
 import com.example.makeitso.model.service.AccountService
@@ -36,7 +37,7 @@ class SettingsViewModel @Inject constructor(
   val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
 
   fun onLoginClick(openScreen: (String) -> Unit) = openScreen(LOGIN_SCREEN)
-
+  fun onLoginClickG(openScreen: (String) -> Unit) = openScreen(LOGIN_SCREEN_G)
   fun onSignUpClick(openScreen: (String) -> Unit) = openScreen(SIGN_UP_SCREEN)
 
   fun onSignOutClick(restartApp: (String) -> Unit) {
