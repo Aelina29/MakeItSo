@@ -35,5 +35,6 @@ interface AccountService {
   suspend fun createAccountWithEmailAndPassword(email: String, password: String)
   suspend fun createAccountWithGoogle(tokenId: String)
   suspend fun getName():String
-  suspend fun getPhotoUrl():Uri?
+  fun getPhotoUrl():Uri?
+  suspend fun getProviderId():String
 }

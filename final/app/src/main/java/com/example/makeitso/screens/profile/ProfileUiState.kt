@@ -1,11 +1,7 @@
 package com.example.makeitso.screens.profile
 
-data class UserInfoUiState(
-    val name: String = "",
-    val email: String = "",
+data class ProfileUiState(
+    var name: String = "",
     var photoUrl: String = "",
-    val providerList: List<SignInProvider>
+    var authMethod: String = ""
 )
-enum class SignInProvider(val providerName: String = "") {
-    Google("Google-Auth"), Email("Email-Auth"), Anonymous("Anonymous-Auth")
-}

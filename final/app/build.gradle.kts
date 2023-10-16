@@ -89,7 +89,6 @@ dependencies {
     implementation ("com.github.stevdza-san:OneTapCompose:1.0.7")
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation ("io.coil-kt:coil:2.2.2")
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
@@ -109,4 +108,7 @@ dependencies {
     androidTestImplementation("com.google.truth:truth:1.1.3")
     kspAndroidTest("com.google.dagger:hilt-compiler:2.47")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    //
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }

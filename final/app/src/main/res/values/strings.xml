@@ -10,6 +10,9 @@
     <string name="try_again">Try again</string>
     <string name="ok">OK</string>
 
+    <!-- ProfileScreen -->
+    <string name="prof_info">Profile information</string>
+
     <!-- LoginScreen -->
     <string name="sign_in">Sign in by Email</string>
     <string name="profile_info">My profile</string>

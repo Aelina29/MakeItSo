@@ -17,6 +17,7 @@ limitations under the License.
 package com.example.makeitso.model.service.impl
 
 import android.net.Uri
+import androidx.compose.ui.platform.debugInspectorInfo
 import com.example.makeitso.model.User
 import com.example.makeitso.model.service.AccountService
 import com.example.makeitso.model.service.trace
@@ -81,8 +82,22 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
     return name
   }
 
-  override suspend fun getPhotoUrl():Uri? {
+  override fun getPhotoUrl():Uri? {
     return auth.currentUser!!.photoUrl
+  }
+
+  override suspend fun getProviderId():String {
+    var provider = "TODO"
+    for (profile in auth.currentUser!!.providerData) {
+      provider = profile.providerId
+    }
+    if (provider=="password"){
+      provider = "email"
+    }
+    if (provider=="google.com"){
+      provider = "google"
+    }
+    return provider
   }
 
   override suspend fun deleteAccount() {

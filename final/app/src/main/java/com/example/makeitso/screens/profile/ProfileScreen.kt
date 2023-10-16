@@ -26,9 +26,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
 import com.example.makeitso.R.string as AppText
 import com.example.makeitso.common.composable.*
 import com.example.makeitso.common.ext.fieldModifier
+import kotlin.math.log
 
 @Composable
 fun ProfileScreen(
@@ -38,7 +40,7 @@ fun ProfileScreen(
 ) {
   //val uiState by viewModel.uiState
 
-  BasicToolbar(AppText.login_details)
+  BasicToolbar(AppText.prof_info)
 
   Column(
     modifier = modifier.fillMaxWidth().fillMaxHeight().verticalScroll(rememberScrollState()),
@@ -46,22 +48,19 @@ fun ProfileScreen(
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     var name =  viewModel.getUserName()
-    Text("Photo TODO",  fontSize = 18.sp)
-    Text("Name:"+name,  fontSize = 18.sp)
-    Text("Authentication method",  fontSize = 18.sp)
+    var photo_url =  viewModel.getUserPhotoUrl()
+    var provider_id =  viewModel.getProviderId()
+    //var photo_url = "https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg"
+    if (photo_url != null){
+      AsyncImage(
+        model = photo_url,
+        contentDescription = null,
 
-//    GmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())
-   // BasicField(AppText.email, userProfile.email, viewModel::onTitleChange, fieldModifier)
-
-//    BasicButton(AppText.sign_in_g, Modifier.basicButton()) { viewModel.onSignInGClick(openAndPopUp) }
-
-//    BasicTextButton(AppText.forgot_password, Modifier.textButton()) {
-//      viewModel.onForgotPasswordClick()
-//    }
-
-//    GoogleSignInButton({
-//      viewModel.onGoogleSignInCLick(it, openAndPopUp)
-//    })
-
+        )
+    }else{
+      Text("No photo",  fontSize = 18.sp)
+    }
+    Text("Name: $name",  fontSize = 18.sp)
+    Text("Authentication method:  $provider_id",  fontSize = 18.sp)
   }
 }
