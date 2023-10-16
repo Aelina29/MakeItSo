@@ -36,7 +36,7 @@ fun ProfileScreen(
   modifier: Modifier = Modifier,
   viewModel: LoginGViewModel = hiltViewModel()
 ) {
-  val uiState by viewModel.uiState
+  //val uiState by viewModel.uiState
 
   BasicToolbar(AppText.login_details)
 
