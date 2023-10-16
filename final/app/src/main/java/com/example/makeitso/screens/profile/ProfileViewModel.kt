@@ -14,8 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package com.example.makeitso.screens.login
+package com.example.makeitso.screens.profile
 
+import android.net.Uri
 import androidx.compose.runtime.mutableStateOf
 import com.example.makeitso.LOGIN_SCREEN
 import com.example.makeitso.R.string as AppText
@@ -33,38 +34,54 @@ class LoginGViewModel @Inject constructor(
   private val accountService: AccountService,
   logService: LogService
 ) : MakeItSoViewModel(logService) {
-  var uiState = mutableStateOf(LoginUiState())
-    private set
+//  var uiState = mutableStateOf(LoginUiState())
+//    private set
+//
+//  private val email
+//    get() = uiState.value.email
+//  private val password
+//    get() = uiState.value.password
+//
+//  fun onEmailChange(newValue: String) {
+//    uiState.value = uiState.value.copy(email = newValue)
+//  }
+//
+//  fun onPasswordChange(newValue: String) {
+//    uiState.value = uiState.value.copy(password = newValue)
+//  }
+//
+//  fun onSignInGClick(openAndPopUp: (String, String) -> Unit) {
+//    if (!email.isValidEmail()) {
+//      SnackbarManager.showMessage(AppText.email_error)
+//      return
+//    }
+//
+//    if (password.isBlank()) {
+//      SnackbarManager.showMessage(AppText.empty_password_error)
+//      return
+//    }
+//
+//    launchCatching {
+//      accountService.authenticate(email, password)
+//      //accountService.createAccountWithGoogle(it)
+//      openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
+//    }
+//  }
 
-  private val email
-    get() = uiState.value.email
-  private val password
-    get() = uiState.value.password
-
-  fun onEmailChange(newValue: String) {
-    uiState.value = uiState.value.copy(email = newValue)
-  }
-
-  fun onPasswordChange(newValue: String) {
-    uiState.value = uiState.value.copy(password = newValue)
-  }
-
-  fun onSignInGClick(openAndPopUp: (String, String) -> Unit) {
-    if (!email.isValidEmail()) {
-      SnackbarManager.showMessage(AppText.email_error)
-      return
-    }
-
-    if (password.isBlank()) {
-      SnackbarManager.showMessage(AppText.empty_password_error)
-      return
-    }
-
+  fun getUserName():String{
+    var name = "Can't get user name"
     launchCatching {
-      accountService.authenticate(email, password)
-      //accountService.createAccountWithGoogle(it)
-      openAndPopUp(SETTINGS_SCREEN, LOGIN_SCREEN)
+      name = accountService.getName()
     }
+    return name
+  }
+
+  fun getUserPhotoUrl(){
+    var photo_url: Uri?
+    launchCatching {
+      photo_url = accountService.getPhotoUrl()
+    }
+    //TODO
   }
 
 //  fun onForgotPasswordClick() {

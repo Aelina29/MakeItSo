@@ -51,6 +51,9 @@ android {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
     packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
 }
@@ -77,10 +80,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
     implementation("com.google.accompanist:accompanist-permissions:0.30.1")
     implementation("com.google.dagger:hilt-android:2.47")
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.material3:material3")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
     ksp("com.google.dagger:hilt-compiler:2.47")
     implementation ("com.github.stevdza-san:OneTapCompose:1.0.7")
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation ("io.coil-kt:coil:2.2.2")
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))

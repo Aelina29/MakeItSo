@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.example.makeitso.model.service
 
+import android.net.Uri
 import com.example.makeitso.model.User
 import kotlinx.coroutines.flow.Flow
 
@@ -33,4 +34,6 @@ interface AccountService {
   suspend fun signOut()
   suspend fun createAccountWithEmailAndPassword(email: String, password: String)
   suspend fun createAccountWithGoogle(tokenId: String)
+  suspend fun getName():String
+  suspend fun getPhotoUrl():Uri?
 }

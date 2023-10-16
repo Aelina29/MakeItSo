@@ -14,24 +14,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 
-package com.example.makeitso.screens.login
+package com.example.makeitso.screens.profile
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.makeitso.R.string as AppText
 import com.example.makeitso.common.composable.*
-import com.example.makeitso.common.ext.basicButton
 import com.example.makeitso.common.ext.fieldModifier
-import com.example.makeitso.common.ext.textButton
 
 @Composable
-fun LoginScreenG(
+fun ProfileScreen(
   openAndPopUp: (String, String) -> Unit,
   modifier: Modifier = Modifier,
   viewModel: LoginGViewModel = hiltViewModel()
@@ -45,8 +45,13 @@ fun LoginScreenG(
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
+    var name =  viewModel.getUserName()
+    Text("Photo TODO",  fontSize = 18.sp)
+    Text("Name:"+name,  fontSize = 18.sp)
+    Text("Authentication method",  fontSize = 18.sp)
+
 //    GmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())
-//    PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
+   // BasicField(AppText.email, userProfile.email, viewModel::onTitleChange, fieldModifier)
 
 //    BasicButton(AppText.sign_in_g, Modifier.basicButton()) { viewModel.onSignInGClick(openAndPopUp) }
 
@@ -54,9 +59,9 @@ fun LoginScreenG(
 //      viewModel.onForgotPasswordClick()
 //    }
 
-    GoogleSignInButton({
-      viewModel.onGoogleSignInCLick(it, openAndPopUp)
-    })
+//    GoogleSignInButton({
+//      viewModel.onGoogleSignInCLick(it, openAndPopUp)
+//    })
 
   }
 }

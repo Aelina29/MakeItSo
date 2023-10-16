@@ -6,6 +6,17 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.MakeItSo"
         android:name = ".MakeItSoHiltApp">
+<!--        <activity-->
+<!--            android:name=".screens.profile"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_profile"-->
+<!--            android:theme="@style/Theme.MakeItSo">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".MakeItSoActivity"
             android:exported="true"

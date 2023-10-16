@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.example.makeitso.model.service.impl
 
+import android.net.Uri
 import com.example.makeitso.model.User
 import com.example.makeitso.model.service.AccountService
 import com.example.makeitso.model.service.trace
@@ -72,6 +73,16 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
     val firebaseCredential = GoogleAuthProvider.getCredential(tokenId, null)
     auth.signInWithCredential(firebaseCredential).await()
 
+  }
+
+  override suspend fun getName():String {
+    var name = auth.currentUser!!.displayName
+    if (name == null) name = "Name is not specified"
+    return name
+  }
+
+  override suspend fun getPhotoUrl():Uri? {
+    return auth.currentUser!!.photoUrl
   }
 
   override suspend fun deleteAccount() {

@@ -54,14 +54,13 @@ fun SettingsScreen(
         viewModel.onLoginClick(openScreen)
       }
 
-      RegularCardEditor(AppText.sign_in_g, AppIcon.ic_sign_in, "", Modifier.card()) {
-        viewModel.onLoginClickG(openScreen)
-      }
-
       RegularCardEditor(AppText.create_account, AppIcon.ic_create_account, "", Modifier.card()) {
         viewModel.onSignUpClick(openScreen)
       }
     } else {
+      RegularCardEditor(AppText.profile_info, AppIcon.ic_sign_in, "", Modifier.card()) {
+        viewModel.onProfileClick(openScreen)
+      }
       SignOutCard { viewModel.onSignOutClick(restartApp) }
       DeleteMyAccountCard { viewModel.onDeleteMyAccountClick(restartApp) }
     }
